@@ -1,0 +1,30 @@
+A Systematic Review of Predicting Elections Based on Social Media Data: Research Challenges and Future Directions
+
+Elections, machine learning, social media (SM),social networks (SNs), systematic review.
+
+
+IEEE Transactions on Computational Social Systems,Volume:8,Issue:4,Issue Date:Aug.2021
+
+
+asystematic_review_ofpredicting_elections
+
+
+
+
+Election_model
+
+
+tweeter
+total_tweet_Time
+tweet
+
+
+Election_prediction_model
+
+
+tweeter
+total_tweet_Time
+tweet
+prediction
+
+Election_model,Election_prediction_model,detection_ratio_model

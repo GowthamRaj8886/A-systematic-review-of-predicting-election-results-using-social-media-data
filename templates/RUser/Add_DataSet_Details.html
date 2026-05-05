@@ -1,0 +1,52 @@
+{% extends 'RUser/design.html' %}
+{% block content %}
+
+<div class="container" style="margin-top: 50px;">
+    <h2 class="text-center">Upload Election Data Set</h2>
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <form method="POST" enctype="multipart/form-data" class="card p-4 shadow-sm">
+                {% csrf_token %}
+                <div class="form-group">
+                    <label for="excel_file">Select Excel File:</label>
+                    <input type="file" class="form-control-file" name="excel_file" id="excel_file" required>
+                </div>
+                <button type="submit" class="btn btn-primary btn-block">Upload</button>
+            </form>
+            
+            {% if error %}
+            <div class="alert alert-danger mt-3" role="alert">
+                {{ error }}
+            </div>
+            {% endif %}
+        </div>
+    </div>
+
+    {% if excel_data %}
+    <div class="row mt-5">
+        <div class="col-md-12">
+            <h3 class="text-center">Uploaded Data</h3>
+            <table class="table table-bordered table-striped">
+                <thead>
+                    <tr>
+                        <th>Tweeter</th>
+                        <th>Total Tweet Time</th>
+                        <th>Tweet</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for row in excel_data %}
+                    <tr>
+                        <td>{{ row.0 }}</td>
+                        <td>{{ row.1 }}</td>
+                        <td>{{ row.2 }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+    {% endif %}
+</div>
+
+{% endblock %}

@@ -1,0 +1,31 @@
+{% extends 'SProvider/design.html' %}
+{% block content %}
+
+<script type="text/javascript" src="https://www.google.com/jsapi"></script>
+<script type="text/javascript">
+    google.load("visualization", "1", { packages: ["corechart"] });
+    google.setOnLoadCallback(drawChart);
+    function drawChart() {
+        var data = google.visualization.arrayToDataTable([
+            ['Sentiment', 'Ratio'],
+            {% for entry in form %}
+    ['{{ entry.names }}', {{ entry.dcount }}],
+        {% endfor %}
+        ]);
+
+    var options = {
+        title: 'Sentiment Ratio Analysis ({{ like_chart }})',
+        pieHole: 0.4,
+    };
+
+    var chart = new google.visualization.PieChart(document.getElementById('donutchart'));
+    chart.draw(data, options);
+    }
+</script>
+
+<div class="container">
+    <h2 class="text-center">Likes/Ratio Chart</h2>
+    <div id="donutchart" style="width: 100%; height: 500px;"></div>
+</div>
+
+{% endblock %}

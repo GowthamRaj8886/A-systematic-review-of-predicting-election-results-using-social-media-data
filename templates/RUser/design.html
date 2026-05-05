@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Remote User Dashboard{% endblock %}
+
+{% block sidebar_title %}Remote User{% endblock %}
+
+{% block sidebar_menu %}
+<a href="{% url 'Add_DataSet_Details' %}"
+    class="{% if request.resolver_match.url_name == 'Add_DataSet_Details' %}active{% endif %}">
+    Post Election DataSets
+</a>
+<a href="{% url 'ViewYourProfile' %}"
+    class="{% if request.resolver_match.url_name == 'ViewYourProfile' %}active{% endif %}">
+    View Profile
+</a>
+<a href="{% url 'Search_DataSets' %}"
+    class="{% if request.resolver_match.url_name == 'Search_DataSets' %}active{% endif %}">
+    Search DataSets
+</a>
+<a href="{% url 'login' %}" style="margin-top: auto; border-top: 1px solid #34495e;">
+    Logout
+</a>
+{% endblock %}
+
+{% block header_title %}User Dashboard{% endblock %}
+
+{% block content %}
+<!-- This block will be filled by child templates like ViewYourProfile.html -->
+{% endblock %}

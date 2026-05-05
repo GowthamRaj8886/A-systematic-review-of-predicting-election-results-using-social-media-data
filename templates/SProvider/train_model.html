@@ -1,0 +1,41 @@
+{% extends 'SProvider/design.html' %}
+{% block content %}
+
+<div class="container">
+    <h2 class="text-center">Train & Test DataSets</h2>
+
+    <div class="row mt-4">
+        <div class="col-md-12 text-center">
+            <div class="card p-3 shadow-sm">
+                <h4>Sentiment Analysis Results</h4>
+                <p><strong>Chris Wallace:</strong> {{ CW }}</p>
+                <p><strong>Joe Biden:</strong> {{ JB }}</p>
+                <p><strong>Donald Trump:</strong> {{ DT }}</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="row mt-5">
+        <div class="col-md-12">
+            <h3 class="text-center">Detection Ratios</h3>
+            <table class="table table-bordered table-striped mt-3">
+                <thead class="thead-light">
+                    <tr>
+                        <th>Sentiment Label</th>
+                        <th>Ratio (%)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for obj in objs %}
+                    <tr>
+                        <td>{{ obj.names }}</td>
+                        <td>{{ obj.ratio }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

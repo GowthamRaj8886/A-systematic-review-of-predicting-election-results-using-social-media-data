@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Service Provider Dashboard{% endblock %}
+
+{% block sidebar_title %}Service Provider{% endblock %}
+
+{% block sidebar_menu %}
+<a href="{% url 'train_model' %}" class="{% if request.resolver_match.url_name == 'train_model' %}active{% endif %}">
+    Train and Test Data Sets
+</a>
+<a href="{% url 'ViewTrendings' %}"
+    class="{% if request.resolver_match.url_name == 'ViewTrendings' %}active{% endif %}">
+    View Tweet Review Prediction Results
+</a>
+<a href="{% url 'charts' 'Positive' %}" class="{% if request.resolver_match.url_name == 'charts' %}active{% endif %}">
+    View Tweet Review Prediction Results in Line Chart
+</a>
+<a href="{% url 'View_Election_Tweet_Predicted_Type' %}"
+    class="{% if request.resolver_match.url_name == 'View_Election_Tweet_Predicted_Type' %}active{% endif %}">
+    View Election Tweet Predicted Type Details
+</a>
+<a href="{% url 'Download_Trained_DataSets' %}"
+    class="{% if request.resolver_match.url_name == 'Download_Trained_DataSets' %}active{% endif %}">
+    Download Trained Data Sets
+</a>
+<a href="{% url 'View_Remote_Users' %}"
+    class="{% if request.resolver_match.url_name == 'View_Remote_Users' %}active{% endif %}">
+    View All Remote Users
+</a>
+<a href="{% url 'serviceproviderlogin' %}" style="margin-top: auto; border-top: 1px solid #34495e;">
+    Logout
+</a>
+{% endblock %}
+
+{% block header_title %}Admin Dashboard{% endblock %}
+
+{% block content %}
+<!-- This block will be filled by child templates like View_Remote_Users.html -->
+{% endblock %}

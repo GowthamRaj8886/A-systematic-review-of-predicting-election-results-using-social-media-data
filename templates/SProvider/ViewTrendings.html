@@ -1,0 +1,28 @@
+{% extends 'SProvider/design.html' %}
+{% block content %}
+
+<div class="container">
+    <h2 class="text-center">Trending Predictions</h2>
+    <div class="row justify-content-center mt-4">
+        <div class="col-md-8">
+            <table class="table table-bordered shadow-sm">
+                <thead class="thead-light">
+                    <tr>
+                        <th>Prediction Type</th>
+                        <th>Count</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for obj in objects %}
+                    <tr>
+                        <td>{{ obj.prediction }}</td>
+                        <td>{{ obj.dcount }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

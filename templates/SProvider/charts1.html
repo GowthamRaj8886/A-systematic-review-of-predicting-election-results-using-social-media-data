@@ -1,0 +1,34 @@
+{% extends 'SProvider/design.html' %}
+{% block content %}
+
+<script type="text/javascript" src="https://www.google.com/jsapi"></script>
+<script type="text/javascript">
+    google.load("visualization", "1", { packages: ["corechart"] });
+    google.setOnLoadCallback(drawChart);
+    function drawChart() {
+        var data = google.visualization.arrayToDataTable([
+            ['Algorithm', 'Accuracy (%)'],
+            {% for entry in form %}
+                ['{{ entry.names }}', {{ entry.dcount }}],
+            {% endfor %}
+        ]);
+
+        var options = {
+            title: 'Machine Learning Algorithm Accuracies',
+            hAxis: { title: 'Algorithm' },
+            vAxis: { title: 'Accuracy (%)', minValue: 0, maxValue: 100 },
+            colors: ['#10b981'],
+            legend: { position: 'none' }
+        };
+
+        var chart = new google.visualization.ColumnChart(document.getElementById('chart_div'));
+        chart.draw(data, options);
+    }
+</script>
+
+<div class="container">
+    <h2 class="text-center">ML Model Accuracy Overview</h2>
+    <div id="chart_div" style="width: 100%; height: 500px;"></div>
+</div>
+
+{% endblock %}

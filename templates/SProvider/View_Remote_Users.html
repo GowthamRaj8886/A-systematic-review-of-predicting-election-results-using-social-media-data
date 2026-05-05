@@ -1,0 +1,40 @@
+{% extends 'SProvider/design.html' %}
+{% block content %}
+
+<div class="container">
+    <h2 class="text-center">Registered Remote Users</h2>
+    <div class="row justify-content-center mt-4">
+        <div class="col-md-12">
+            <table class="table table-bordered table-striped bg-white shadow-sm">
+                <thead class="thead-dark">
+                    <tr>
+                        <th>Username</th>
+                        <th>Email</th>
+                        <th>Phone Number</th>
+                        <th>Country</th>
+                        <th>State</th>
+                        <th>City</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for object in objects %}
+                    <tr>
+                        <td>{{ object.username }}</td>
+                        <td>{{ object.email }}</td>
+                        <td>{{ object.phoneno }}</td>
+                        <td>{{ object.country }}</td>
+                        <td>{{ object.state }}</td>
+                        <td>{{ object.city }}</td>
+                    </tr>
+                    {% empty %}
+                    <tr>
+                        <td colspan="6" class="text-center">No users found.</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

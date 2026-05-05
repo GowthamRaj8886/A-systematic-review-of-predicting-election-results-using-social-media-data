@@ -1,0 +1,47 @@
+{% extends 'SProvider/design.html' %}
+{% block content %}
+
+<div class="container">
+    <h2 class="text-center">Election Tweet Predictions</h2>
+
+    <div class="text-right mb-3">
+        <a href="{% url 'Download_Trained_DataSets' %}" class="btn btn-success">Download Excel</a>
+    </div>
+
+    <div class="table-responsive">
+        <table class="table table-bordered table-hover">
+            <thead class="thead-dark">
+                <tr>
+                    <th>Tweeter</th>
+                    <th>Total Tweet Time</th>
+                    <th>Tweet</th>
+                    <th>Prediction</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for obj in list_objects %}
+                <tr>
+                    <td>{{ obj.tweeter }}</td>
+                    <td>{{ obj.total_tweet_Time }}</td>
+                    <td>{{ obj.tweet }}</td>
+                    <td>
+                        {% if obj.prediction == 'Positive' %}
+                        <span class="badge badge-success">Positive</span>
+                        {% elif obj.prediction == 'Negative' %}
+                        <span class="badge badge-danger">Negative</span>
+                        {% else %}
+                        <span class="badge badge-secondary">Neutral</span>
+                        {% endif %}
+                    </td>
+                </tr>
+                {% empty %}
+                <tr>
+                    <td colspan="4" class="text-center">No predictions found. Train the model first.</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+
+{% endblock %}
